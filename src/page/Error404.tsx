@@ -15,7 +15,7 @@ export const Error404 = () => {
                     Error 404!
                 </h3>
                 <p>
-                    Page is not found. You've lose somewhere!
+                    Page is not found. You've lost somewhere!
                 </p>
                 <p>
                     <Link to="/">Go Back to Homepage</Link>

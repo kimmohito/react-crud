@@ -4,6 +4,7 @@ import { auth, googleProvider } from '../config/firebase';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Card, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 
 
@@ -67,6 +68,10 @@ export const Login = ():JSX.Element => {
                 <Button onClick={signInWithGoogle}>
                     Sign In with Google
                 </Button>
+
+                <p
+                    className="mt-4 mb-0"
+                >Doesn't have an account? <Link to="/register">Register</Link></p>
 
 
                 

@@ -6,7 +6,7 @@ import { auth } from './config/firebase'
 
 import { Login } from './page/Login'
 import { Profile } from './page/Profile'
-import { Register } from './page/Registe\r'
+import { Register } from './page/Register'
 import { Error404 } from './page/Error404'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -53,6 +53,7 @@ function App() :JSX.Element {
     Ternary operator
     null coalescing
     truthy falsy
+    Solid Principle
 */
 
 export default App;
