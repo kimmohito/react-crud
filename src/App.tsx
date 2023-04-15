@@ -1,26 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { useState } from 'react'
+
+import { auth } from './config/firebase'
+
+import { Login } from './page/Login'
+import { Profile } from './page/Profile'
+import { Register } from './page/Registe\r'
+import { Error404 } from './page/Error404'
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Button } from 'react-bootstrap'
+
+import { Routes, Route, Navigate, Link } from 'react-router-dom'
+
+import UserContext from './context/UserContext'
+import { User } from 'firebase/auth'
+
+function App() :JSX.Element {
+
+    const [currentUser, setCurrentUser] = useState<User | null>(null);
+
+    auth.onAuthStateChanged( (current) => setCurrentUser(current));
+
+    return(
+        <UserContext.Provider value={{currentUser}}>
+            {
+                !currentUser && (
+                    <Routes>
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/register' element={<Register />} />
+                        <Route path='/' element={<Login />} />
+                    </Routes>
+                )
+            }
+            {
+                currentUser && (
+                    <Routes>
+                        <Route path='/' element={<Profile />} />
+                        <Route path='*' element={<Error404 />} />
+                    </Routes>
+                )
+            }
+        </UserContext.Provider>
+    );
+
 }
+
+/* Notes:
+    Craco
+    Cognitive Complexity.
+    Ternary operator
+    null coalescing
+    truthy falsy
+*/
 
 export default App;
